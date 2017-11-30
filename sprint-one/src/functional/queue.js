@@ -5,6 +5,7 @@ var Queue = function() {
   var storage = {};
   var key = 0;
   // Implement the methods below
+  var firstKey = 0;
 
   someInstance.enqueue = function(value) {
     storage[key] = value;
@@ -12,12 +13,19 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    delete storage[key--];
+    var result;
+    if (key > 0) {
+      result = storage[firstKey];
+      console.log(result); // 
+      delete storage[firstKey];
+      firstKey++;
+    }
+    return result;
   };
 
   someInstance.size = function() {
-    return key;
-  };
+    return Math.max(0, key - firstKey);
+  }; 
 
   return someInstance;
 };
