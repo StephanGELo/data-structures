@@ -14,9 +14,9 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     var result;
-    if (key > 0) {
+    if (key >= 0) {
       result = storage[firstKey];
-      console.log(result); // 
+      console.log(result); 
       delete storage[firstKey];
       firstKey++;
     }
