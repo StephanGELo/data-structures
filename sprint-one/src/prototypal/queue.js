@@ -18,7 +18,7 @@ queueMethods.enqueue = function(value) {
 };
 
 queueMethods.dequeue = function() {
-  if (this.count > 0) {
+  if (this.count >= 0) {
     var result = this.storage[this.firstKey];
     delete this.storage[this.firstKey];
     this.firstKey++;
