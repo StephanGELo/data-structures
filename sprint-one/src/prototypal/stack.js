@@ -17,9 +17,15 @@ stackMethods.push = function(value) {
 };
 
 stackMethods.pop = function() {
+  var result;
+  if (this.count === 0) {
+    result = this.storage[this.count];
+    delete this.storage[this.count];
+  }
+ 
   if (this.count > 0) {
     this.count--;
-    var result = this.storage[this.count];
+    result = this.storage[this.count];
     delete this.storage[this.count];
   }
   return result;
