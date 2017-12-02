@@ -19,6 +19,11 @@ stackMethods.push = function(value) {
 };
 
 stackMethods.pop = function() {
+  if (this.keyCount === 0) {
+    result = this.storage[this.keyCount];
+    delete this.storage[this.keyCount];
+  }
+
   if (this.keyCount > 0) {
     this.keyCount--; 
     var result = this.storage[this.keyCount];
