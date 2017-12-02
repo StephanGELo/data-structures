@@ -20,18 +20,22 @@ var LinkedList = function() {
 
   list.removeHead = function() { 
     // //removes the first node from the list and returns its value
+    var currentValue = this.head.value;
+    
     if (this.head === null) {
       return;
     }  
-
-    if (this.head === this.tail) {
-      this.head = null;
-      this.tail = null;
-    }
-    console.log(list);
-    // this.head = this.head.value;
-    var result = this.head;
+     
     this.head = this.head.next;
+    return currentValue;
+    
+
+    // if (this.head === this.tail) {
+    //   this.head = null;
+    //   this.tail = null;
+    // }
+    // console.log(list);
+    // this.head = this.head.value;
     // this.head.next = this.head.value;
     //this.head. = this.head;
     // return this.head;
@@ -49,8 +53,33 @@ var LinkedList = function() {
   list.contains = function(target) {
     //returns boolean reflecting whether or not the passed in value 
     // is in the list.
-  };
 
+    if (this.head === null) {
+      return false;
+    }
+
+    if (target === this.head.value) {
+      return true;
+    }
+    if (target === this.tail.value) {
+      return true;
+    }
+
+    if (target === this.head.next.value) {
+      return true;
+    } else {
+      
+      var nextNode = this.head.next;
+      while (nextNode !== null) {
+        if (target === nextNode.value) {
+          return true;
+        } 
+        nextNode = nextNode.next;
+      }    
+
+    }
+    return false;
+  };
   return list;
 };
 
