@@ -12,7 +12,7 @@ Queue.prototype.enqueue = function(value) {
 };
 
 Queue.prototype.dequeue = function(value) {
-  if (this.count > 0) {
+  if (this.count >= 0) {
     var result = this.storage[this.firstKey];
     delete this.storage[this.firstKey];
     this.firstKey++;
