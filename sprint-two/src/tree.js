@@ -1,7 +1,7 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-  // your code here
+  
   newTree.children = [];
   _.extend(newTree, treeMethods);
 
@@ -16,20 +16,30 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  if (target === this.value) {
-    return true;
-  }
+  var result = false;
+  var that = this;
 
-  if (this.children.length > 0) {
-    for (var i = 0; i < this.children.length; i++) {
-      if (target === this.children[i].value) {
-        return true;
+  var searchNode = function(node) {
+    if (target === node.value) {
+      result = true;
+    }
+    if (node.children.length > 0) {
+      for (var i = 0; i < node.children.length; i++) {
+        searchNode(node.children[i]);    
       }
-      return false;     
     }
   }
+
+  searchNode(that);
+
+  return result;
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ Answer: 
+ The time complexity of the "addchild" function is a constant time operation, O(1).
+ 
+ The time complexity of the "constains" function uses a recursive for-loop and is a linear time operation, O(n).
  */
