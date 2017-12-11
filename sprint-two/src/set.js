@@ -8,7 +8,9 @@ var setPrototype = {};
 
 setPrototype.add = function(item) {
   //take any string and add it to the set
-  this._storage.push(item);
+  if (this._storage.indexOf(item) === -1) {
+    this._storage.push(item);
+  }
 };
 
 setPrototype.contains = function(item) {
@@ -29,6 +31,6 @@ setPrototype.remove = function(item) {
 /*
  * Complexity: What is the time complexity of the above functions?
    Answer:
-   The time complexity for the "add" function is constant time, O(1).
-   The time complexity for the "contains" and "remove" function is linear time, O(n).  
+   
+   The time complexity for the "add", "contains" and "remove" functions are linear time, O(n).  
  */
